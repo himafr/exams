@@ -8,5 +8,5 @@ app.get("*",(req,res)=>{
     res.render("holder")
 })
 app.listen(process.env.PORT,()=>{
-    console.log("hima")
+    console.log("Hima")
 })
