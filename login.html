@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>log in classy</title>
+    <link rel="stylesheet" href="/public/css/login.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">welcome back</div>
+        <div class="title signup">welcome</div>
+      </div>
+      <div class="form-container">
+        <div class="slide-controls">
+          <input type="radio" name="slide" id="login" checked />
+          <input type="radio" name="slide" id="signup" />
+          <label for="login" class="slide login">Login</label>
+          <label for="signup" class="slide signup">Signup</label>
+          <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+          <form action="login" method="post" class="login">
+            <div class="field">
+              <input
+                type="text"
+                placeholder="Email Address"
+                name="username"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <!-- <div class="pass-link"><a href="#">Forgot password?</a></div> -->
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input type="submit" value="Login" />
+            </div>
+            <div class="signup-link">
+              Don't have account? <a href="#">Signup now</a>
+            </div>
+          </form>
+          <form action="signup" method="post" class="signup">
+            <div class="field edit">
+              <input
+                type="text"
+                name="username"
+                placeholder="Email Address"
+                required
+              />
+            </div>
+            <div class="field edit">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <!-- <div class="field edit">
+              <input type="text" placeholder="name" name="firstName" required />
+            </div>
+            <div class="field edit">
+              <input type="text" placeholder="Address(optional)" name="address"  />
+            </div>
+            <div class="field editt">
+              <input type="number" placeholder="Day" name="day" required />
+            </div>
+            <div class="field editt">
+              <input type="number" placeholder="Month" name="month" required />
+            </div>
+            <div class="field editt">
+              <input type="number" placeholder="Year" name="year" required />
+            </div>
+            <div class="field btn">
+              <div class="btn-layer"></div> -->
+              <input type="submit" value="Signup" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+    <script src="/public/js/login.js"></script>
+  </body>
+</html>

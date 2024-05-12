@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+.content{
+    padding: 8px;
+     display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.photo{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ .cont{
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.circle-img {
+    border-radius: 50%;
+    border: 7px solid #fff;
+    width: 150px;
+    height: 150px;
+  }
+  .log-out{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
