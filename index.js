@@ -97,6 +97,7 @@ app.get("/logout",(req,res)=>{
 //         }) 
 //   })
 
+
   app.post("/login",(req,res)=>{
     passport.authenticate('local',
     (err, user, info) => {
