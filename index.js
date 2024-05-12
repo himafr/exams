@@ -80,22 +80,22 @@ app.get("/logout",(req,res)=>{
       res.redirect("/");
     });
   })
-app.post("/signup",(req,res)=>{
-    console.log(req.body)
-    const newuser = new User({
-      username:req.body.username
-    })
-      User.register(newuser,req.body.password,(err,user)=>{
-          if(err){
-            console.log(err)
-            res.send("user name is already exist")
-          }else{
-            passport.authenticate("local")(req,res,()=>{
-              res.redirect("/")
-            } )
-          }
-        }) 
-  })
+// app.post("/signup",(req,res)=>{
+//     console.log(req.body)
+//     const newuser = new User({
+//       username:req.body.username
+//     })
+//       User.register(newuser,req.body.password,(err,user)=>{
+//           if(err){
+//             console.log(err)
+//             res.send("user name is already exist")
+//           }else{
+//             passport.authenticate("local")(req,res,()=>{
+//               res.redirect("/")
+//             } )
+//           }
+//         }) 
+//   })
 
   app.post("/login",(req,res)=>{
     passport.authenticate('local',
