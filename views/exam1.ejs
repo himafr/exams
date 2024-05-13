@@ -1,10 +1,95 @@
 <%- include("partials/header") %>
-        <div id="root"></div>
-        <div class="row">
-            <form action="exam1" method="post" class="col-12 next">
-                <input type="hidden" id="val" value="0" name="deg">
-                <button type="submit" class="btn btn-primary "> Next </button>
-            </form>
-        </div>
 
-    <%- include("partials/footer") %>
+<div class="alert alert-primary">
+        <form action="exam1" method="post" >
+
+        <% qt.forEach((element,index) => {%>
+            <% if(element.a3){ %>
+  <div class="card border-info mb-3">
+    <div class="card-header"><%=element.q%></div>
+    <div class="card-body">
+        <div class="row">
+            <label for="a<%=element.id%>" class="col-12 col-md">
+                <input
+                checked
+                id="a<%=element.id%>"
+                name="ans<%=element.id%>"
+                value="a<%=element.id%>"
+                type="radio"
+                class="card-text"
+                />
+                <%=element.a1%></label
+        >
+        <label for="b<%=element.id%>" class="col-12 col-md">
+            <input
+            id="b<%=element.id%>" 
+            name="ans<%=element.id%>"
+            value="b<%=element.id%>"
+            type="radio"
+            class="card-text"
+            />
+            <%=element.a2%>
+        </label>
+        <label for="c<%=element.id%>" class="col-12 col-md">
+            <input
+            id="c<%=element.id%>"
+            name="ans<%=element.id%>"
+            value="c<%=element.id%>"
+            type="radio"
+            class="card-text"
+            />
+            <%=element.a3%>
+        </label>
+        <label for="d<%=element.id%>" class="col-12 col-md">
+            <input
+            id="d<%=element.id%>"
+            name="ans<%=element.id%>"
+            value="d<%=element.id%>"
+            type="radio"
+            class="card-text"
+            />
+            <%=element.a4%>
+        </label>
+      </div>
+    </div>
+</div>
+  <%}else{%>
+    <div class="card border-info mb-3">
+        <div class="card-header"><%=element.q%></div>
+        <div class="card-body">
+            <div class="row">
+                <label for="a<%=element.id%>" class="col-12 col-md">
+                    <input
+                    checked
+                    id="a<%=element.id%>"
+                    value="a<%=element.id%>"
+                    name="ans<%=element.id%>"
+                    type="radio"
+                    class="card-text"
+                    />
+                    <%=element.a1%></label
+                    >
+                    <label for="b<%=element.id%>" class="col-12 col-md">
+                        <input
+                        id="b<%=element.id%>" 
+                        value="b<%=element.id%>"
+                        name="ans<%=element.id%>"
+                        type="radio"
+                        class="card-text"
+                        />
+                        <%=element.a2%>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <%}}); %>
+        
+ 
+
+  <div class="row">
+      <button type="submit" class="btn btn-primary col-12 next">Next</button>
+    </form>
+  </div>
+
+  <%- include("partials/footer") %>
+</div>

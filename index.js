@@ -43,6 +43,18 @@ const Resault= new mongoose.model("Resault",{
     "name":String,
     "sub":String,
 })
+const Question= new mongoose.model("Question",{
+    "id":Number,
+    "quest":Array,
+    "subject":String,
+})
+app.get("/hi",(req,res)=>{
+  Question.find({subject:"exam0.1"}).then((found)=>{
+    res.send(found[0].quest)
+  console.log(found[0]._d)
+  })
+})
+
 
 app.get("/",(req,res)=>{
     if(req.isAuthenticated()){
@@ -58,24 +70,97 @@ app.get("/",(req,res)=>{
 
 app.get("/exam1",(req,res)=>{
     if(req.isAuthenticated()){
-        res.render("exam1")
+      Question.find({subject:"exam1"}).then((found)=>{
+        var arr=found[0].quest
+        var ab=JSON.stringify(found[0].quest)
+        arr.forEach((element,index)=>{
+          var carry= arr[0]
+          arr.shift()
+          arr.splice(rand(),0,carry)   
+        })
+        res.render("exam1" ,{qt:arr,ab:ab})
+        function rand(){
+          return Math.floor(Math.random()*arr.length)
+          
+        }
+      })
     }else{
-        res.sendFile(__dirname+"/login.html" )
+      res.sendFile(__dirname+"/login.html" )
     }
-})
+  })
 
 app.post("/exam1",(req,res)=>{
-const resault = new Resault({
-    "degree":req.body.deg,
+  Question.find({subject:"exam1"}).then((found)=>{
+    const fc =found[0].quest ;
+    var deg=0;
+    var ans =[];
+    var mans=[];
+    var obj=req.body;
+    var stil=Object.keys(obj).length
+    console.log(stil)
+    console.log(obj.ans44)
+    obj=JSON.stringify(obj)
+    console.log(obj)
+    for (let i = 0; i < 200; i++) {
+      let ans="ans"+i;
+      obj=obj.replaceAll(ans,"")
+    }
+    obj=obj.replaceAll(`"0"`,"")
+    obj=obj.replaceAll(`"1"`,"")
+    obj=obj.replaceAll(`"2"`,"")
+    obj=obj.replaceAll(`"3"`,"")
+    obj=obj.replaceAll(`"4"`,"")
+    obj=obj.replaceAll(`"5"`,"")
+    obj=obj.replaceAll(`"6"`,"")
+    obj=obj.replaceAll(`"7"`,"")
+    obj=obj.replaceAll(`"8"`,"")
+    obj=obj.replaceAll(`"9"`,"")
+    obj=obj.replaceAll(`"`,"")
+    console.log(obj)
+    obj=obj.replaceAll(`{`,"")
+    obj=obj.replaceAll(`}`,"")
+    
+    // obj=obj.replaceAll(`"on"`,"")
+    // obj=obj.replaceAll(`[`,"")
+    // obj=obj.replaceAll(`]`,"")
+    console.log(obj)
+    obj=obj.replaceAll(`:`,"")
+    console.log(obj)
+     obj=obj.split(",")
+    console.log(obj)
+    var answers=[];
+     for(let i=0;i<fc.length;i++){
+      
+      console.log(obj[i])
+
+        var me=fc[i].an + fc[i].id ;
+        answers.push(me)
+        if(obj.includes(me)){
+          ans.push(me)
+          deg=deg+1
+        }else{
+          mans.push(obj[i])
+        }
+      }
+      console.log(deg)
+      const resault = new Resault({
+        "degree":deg,
     "name":req.user.username,
     "sub":"exam1",
-})
-resault.save()
-res.redirect("/")
-})
-
-app.get("/logout",(req,res)=>{
-    req.logout(req.user, err => {
+        })
+        resault.save()
+        var nt={
+          "ans":ans,
+          "mans":mans
+        }
+        res.render("exam1result",{"nt":nt,"qt":fc,anss:answers})
+    })
+    
+    })
+    
+    
+    app.get("/logout",(req,res)=>{
+      req.logout(req.user, err => {
       if(err) return next(err);
       res.redirect("/");
     });
@@ -96,6 +181,7 @@ app.get("/logout",(req,res)=>{
 //           }
 //         }) 
 //   })
+
 
 
   app.post("/login",(req,res)=>{
@@ -124,6 +210,7 @@ app.get("/logout",(req,res)=>{
     }
     })(req, res);
 }) 
+
 
   connectDB().then(() => {
     app.listen( process.env.PORT||3000, () => {

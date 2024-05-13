@@ -2,33 +2,50 @@ var degree= 0
 arr.forEach((element,index)=>{
 var carry= arr[0]
 arr.shift()
-arr.splice(rand(0),0,carry)   
+arr.splice(rand(),0,carry)   
 })
-rarr.forEach((element,index)=>{
-var carry= rarr[0]
-rarr.shift()
-rarr.splice(rand(1),0,carry)   
-})
-arr.forEach(element => {
-    document.getElementById("root").innerHTML +=`<div class="alert alert-primary">
-    <div class="row">
-    <div class="col-12 alert alert-secondary">${element.q}</div>
-    <label class="alert alert-warning col-12 col-md" for="${element.an}">${element.a1}</label>
-    <label class="alert alert-warning col-12 col-md" for="${element.an}">${element.a2}</label>
-    <label class="alert alert-warning col-12 col-md" for="${element.an}">${element.a3}</label>
-    <label class="alert alert-warning col-12 col-md" for="${element.an}">${element.a4}</label>                
-    </div>
+arr.forEach((element,index) => {
+    if(element.a3){
+
+        document.getElementById("root").innerHTML +=`
+        <div class="card border-info mb-3 " >
+                <div class="card-header">${element.q}</div>
+                <div class="card-body">
+                    <div class="row">
+                        <label for="a${index}" class="col-12 col-md">
+                            <input id="a${index}" name="${index}" type="radio" class="card-text "/> ${element.a1}
+                        </label>
+                        <label for="b${index}" class="col-12 col-md">
+                            <input id="b${index}" name="${index}" type="radio" class="card-text "/> ${element.a2}
+                        </label>
+                        <label for="c${index}" class="col-12 col-md">
+                            <input id="c${index}" name="${index}" type="radio" class="card-text "/> ${element.a3}
+                        </label>
+                        <label for="d${index}" class="col-12 col-md">
+                            <input id="d${index}" name="${index}" type="radio" class="card-text "/> ${element.a4}
+                        </label>
+                    </div>
+                </div>
+        </div> `
+    }else{
+        document.getElementById("root").innerHTML +=`
+    <div class="card border-info mb-3 " >
+            <div class="card-header">${element.q}</div>
+            <div class="card-body">
+                <div class="row">
+                    <label for="a${index}" class="col-12 col-md">
+                        <input id="a${index}" name="${index}" type="radio" class="card-text "/> ${element.a1}
+                    </label>
+                    <label for="b${index}" class="col-12 col-md">
+                        <input id="b${index}" name="${index}" type="radio" class="card-text "/> ${element.a2}
+                    </label>
+                </div>
+            </div>
     </div> `
+    }
+    
 });
-rarr.forEach(element => {
-    document.getElementById("root").innerHTML +=`<div class="alert alert-primary">
-    <div class="row">
-    <div class="col-12 alert alert-secondary">${element.q}</div>
-    <label class="alert alert-warning col-12 col-md" for="${element.an}">${element.a1}</label>
-    <label class="alert alert-warning col-12 col-md" for="${element.an}">${element.a2}</label>
-    </div>
-    </div> `
-});
+
 var all=document.querySelectorAll(".alert-warning")
 all.forEach((element,index)=>{
     element.addEventListener("click",()=>{
@@ -46,17 +63,12 @@ all.forEach((element,index)=>{
         }
     },{"once":true})
 })
-const carr =["a","b","c","z","x","y","f"]
+
     
     function val(){
         document.getElementById("val").value = degree
     }
-    function rand(num){
-        if (num==1){
-           return Math.floor(Math.random()*rarr.length)
-        }if (num ==0) {
+    function rand(){
            return Math.floor(Math.random()*arr.length)
-        }else{
-            return Math.floor(Math.random()*carr.length)
-        }         
+               
     }

@@ -1,0 +1,65 @@
+<%- include("partials/header") %>
+
+<div class="alert alert-primary">
+        <form action="exam1" method="post" >
+        <% qt.forEach((element,index) => {%>
+            <% if(element.a3){ %>
+  <div class="card border-info mb-3">
+    <div class="card-header"><%=element.q%></div>
+    <div class="card-body">
+        <div class="row">
+    
+                <label id="a<%= element.id %>" class=" col-12 col-md"><%=element.a1%></label>
+                <label id="b<%= element.id %>" class=" col-12 col-md"><%=element.a2%></label>
+                <label id="c<%= element.id %>" class=" col-12 col-md"><%=element.a3%></label>
+                <label id="d<%= element.id %>" class=" col-12 col-md"><%=element.a4%></label>
+            
+            
+            
+                                
+      </div>
+    </div>
+</div>
+  <%}else{%>
+    <div class="card border-info mb-3">
+        <div class="card-header"><%=element.q%></div>
+        <div class="card-body">
+            <div class="row">
+               
+                <label id="a<%= element.id %>" class=" col-12 col-md"><%=element.a1%></label>
+                <label id="b<%= element.id %>" class=" col-12 col-md"><%=element.a2%></label>
+                </div>
+            </div>
+        </div>
+        <%}}); %>
+        
+ 
+
+  <div class="row">
+      <button class="btn btn-primary col-12 next"><a href="/">Next</a></button>
+    </form>
+  </div>
+
+</div>
+<script>
+    var zz="<%- anss %>"
+    var xx="<%- nt.mans %>"
+    console.log(xx)
+    var z=zz.split(",")
+    var x=xx.split(",")
+    console.log(x)
+    for(let i =0;i<x.length;i++){
+        console.log(x[i])
+        let mt = x[i]
+        document.getElementById(mt).setAttribute("class","alert alert-danger col-12 col-md")
+    };  
+    window.onload = function() {
+    for(let i =0;i<z.length;i++){       
+        let st = z[i]
+        document.getElementById(st).setAttribute("class","alert alert-success col-12 col-md")
+    };  
+
+}
+</script>
+<%- include("partials/footer") %>
+
