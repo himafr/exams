@@ -96,11 +96,7 @@ app.post("/exam1",(req,res)=>{
     var ans =[];
     var mans=[];
     var obj=req.body;
-    var stil=Object.keys(obj).length
-    console.log(stil)
-    console.log(obj.ans44)
     obj=JSON.stringify(obj)
-    console.log(obj)
     for (let i = 0; i < 200; i++) {
       let ans="ans"+i;
       obj=obj.replaceAll(ans,"")
@@ -116,22 +112,15 @@ app.post("/exam1",(req,res)=>{
     obj=obj.replaceAll(`"8"`,"")
     obj=obj.replaceAll(`"9"`,"")
     obj=obj.replaceAll(`"`,"")
-    console.log(obj)
     obj=obj.replaceAll(`{`,"")
     obj=obj.replaceAll(`}`,"")
-    
     // obj=obj.replaceAll(`"on"`,"")
     // obj=obj.replaceAll(`[`,"")
     // obj=obj.replaceAll(`]`,"")
-    console.log(obj)
     obj=obj.replaceAll(`:`,"")
-    console.log(obj)
      obj=obj.split(",")
-    console.log(obj)
     var answers=[];
      for(let i=0;i<fc.length;i++){
-      
-      console.log(obj[i])
 
         var me=fc[i].an + fc[i].id ;
         answers.push(me)
@@ -142,7 +131,6 @@ app.post("/exam1",(req,res)=>{
           mans.push(obj[i])
         }
       }
-      console.log(deg)
       const resault = new Resault({
         "degree":deg,
     "name":req.user.username,
