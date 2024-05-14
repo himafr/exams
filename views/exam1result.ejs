@@ -9,10 +9,10 @@
     <div class="card-body">
         <div class="row">
     
-                <label id="a<%= element.id %>" class=" col-12 col-md"><%=element.a1%></label>
-                <label id="b<%= element.id %>" class=" col-12 col-md"><%=element.a2%></label>
-                <label id="c<%= element.id %>" class=" col-12 col-md"><%=element.a3%></label>
-                <label id="d<%= element.id %>" class=" col-12 col-md"><%=element.a4%></label>
+                <label id="a<%= element.id %>a" class=" col-12 col-md"><%=element.a1%></label>
+                <label id="b<%= element.id %>b" class=" col-12 col-md"><%=element.a2%></label>
+                <label id="c<%= element.id %>c" class=" col-12 col-md"><%=element.a3%></label>
+                <label id="d<%= element.id %>d" class=" col-12 col-md"><%=element.a4%></label>
             
             
             
@@ -26,8 +26,8 @@
         <div class="card-body">
             <div class="row">
                
-                <label id="a<%= element.id %>" class=" col-12 col-md"><%=element.a1%></label>
-                <label id="b<%= element.id %>" class=" col-12 col-md"><%=element.a2%></label>
+                <label id="a<%= element.id %>a" class=" col-12 col-md"><%=element.a1%></label>
+                <label id="b<%= element.id %>b" class=" col-12 col-md"><%=element.a2%></label>
                 </div>
             </div>
         </div>
@@ -36,24 +36,26 @@
  
 
   <div class="row">
-      <button class="btn btn-primary col-12 next"><a href="/">Next</a></button>
+      <!-- <button class=""> -->
+        <a class="btn btn-primary col-12 next" href="/">Next</a>
+    <!-- </button> -->
     </form>
   </div>
 
 </div>
 <script>
     var zz="<%- anss %>"
-    var xx="<%- nt.mans %>"
-    console.log(xx)
+    var xx="<%- mans %>"
     var z=zz.split(",")
     var x=xx.split(",")
-    console.log(x)
-    for(let i =0;i<x.length;i++){
-        console.log(x[i])
-        let mt = x[i]
-        document.getElementById(mt).setAttribute("class","alert alert-danger col-12 col-md")
-    };  
+    console.log(x.length)
+    console.log(z.length)
     window.onload = function() {
+        x.forEach((element)=>{
+            console.log(element)
+            let mt = element
+            document.getElementById(mt).setAttribute("class","alert alert-danger col-12 col-md")  
+    })
     for(let i =0;i<z.length;i++){       
         let st = z[i]
         document.getElementById(st).setAttribute("class","alert alert-success col-12 col-md")

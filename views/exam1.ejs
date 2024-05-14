@@ -1,7 +1,7 @@
 <%- include("partials/header") %>
 
 <div class="alert alert-primary">
-        <form action="exam1" method="post" >
+        <form action="<%= cd %>" method="post" >
 
         <% qt.forEach((element,index) => {%>
             <% if(element.a3){ %>
@@ -14,7 +14,7 @@
                 checked
                 id="a<%=element.id%>"
                 name="ans<%=element.id%>"
-                value="a<%=element.id%>"
+                value="a<%=element.id%>a"
                 type="radio"
                 class="card-text"
                 />
@@ -24,7 +24,7 @@
             <input
             id="b<%=element.id%>" 
             name="ans<%=element.id%>"
-            value="b<%=element.id%>"
+            value="b<%=element.id%>b"
             type="radio"
             class="card-text"
             />
@@ -34,7 +34,7 @@
             <input
             id="c<%=element.id%>"
             name="ans<%=element.id%>"
-            value="c<%=element.id%>"
+            value="c<%=element.id%>c"
             type="radio"
             class="card-text"
             />
@@ -44,7 +44,7 @@
             <input
             id="d<%=element.id%>"
             name="ans<%=element.id%>"
-            value="d<%=element.id%>"
+            value="d<%=element.id%>d"
             type="radio"
             class="card-text"
             />
@@ -62,7 +62,7 @@
                     <input
                     checked
                     id="a<%=element.id%>"
-                    value="a<%=element.id%>"
+                    value="a<%=element.id%>a"
                     name="ans<%=element.id%>"
                     type="radio"
                     class="card-text"
@@ -72,7 +72,7 @@
                     <label for="b<%=element.id%>" class="col-12 col-md">
                         <input
                         id="b<%=element.id%>" 
-                        value="b<%=element.id%>"
+                        value="b<%=element.id%>b"
                         name="ans<%=element.id%>"
                         type="radio"
                         class="card-text"

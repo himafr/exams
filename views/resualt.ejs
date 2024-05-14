@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+<style>
+    body{
+        text-align: left;
+        direction: ltr;
+    }
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.3rem;
+    }
+</style>
+<div class="alert alert-success content">
+    <% found.forEach(element => {%>
+        <div class="card" style="width: 8rem;">
+            <div class="card-header">
+                <% if(element.total){ %>
+                    <%= element.total %>
+                    <% }else{ %>
+                        74
+                        <% } %>
+            </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">Yours  <%= element.degree %></li>
+        </ul>
+        </div>
+        
+    <%}); %>
+    
+</div>
+<%- include("partials/footer") %>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exam1</title>
+    <title>hima</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/alfa-1.css">
 </head>
@@ -11,28 +11,25 @@
     <div class="content alert alert-info">
         <div class="photo"> <a href="/logout" class="btn btn-info log-out"> Log Out</a> <img class="circle-img" src="photo/<%- photo %>.png" alt="avatar_img" /> </div>
         <div class="cont">    
-            <% exam1.forEach(element => {%>
-                <div>
-                    <div class="card" style="width: 11rem;">
-                        <img class="card-img-top" alt="card" src="/photo/exam1.png"></img>
-                        <div class="card-body">
-                            <p class="card-text">your degree is : 74/<%- element.degree %></p>
-                        </div>
-                    </div>
+            <div class="card" style="width: 11rem;">
+                <img src="/photo/exam1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">تصميم </h5>
+                  <a href="/resault/exam1" class="btn btn-outline-success" style="margin-left: auto; margin-bottom: 10px; width: 100%;">show resault</a>
+                  <a href="/exams/exam1" class="btn btn-primary" style="width: 100%;">get exam</a>
                 </div>
-                
-                <% }); %>
-             
+              </div> 
         </div>
-        <a class="btn btn-primary" style="color: aliceblue;" href="/exam1"> get exam</a>
-            <div class="cont">
-                <div class="card" style="width: 11rem;">
-                    <img class="card-img-top" alt="card" src="/photo/exam1.png"></img>
-                    <div class="card-body">
-                    <p class="card-text">comming soon</p>
-                    </div>
-                 </div>        
-        </div>  
+        <!-- <div class="cont">    
+            <div class="card" style="width: 11rem;">
+                <img src="/photo/exam1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center;">تصميم </h5>
+                  <a href="/resault/exam2" class="btn btn-outline-success" style="margin-left: auto; margin-bottom: 10px; width: 100%;">show resault</a>
+                  <a href="/exams/exam2" class="btn btn-primary" style="width: 100%;">get exam</a>
+                </div>
+              </div> 
+        </div> -->
     </div>
     <script>
     </script>

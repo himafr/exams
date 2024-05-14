@@ -42,35 +42,40 @@ const Resault= new mongoose.model("Resault",{
     "degree":Number,
     "name":String,
     "sub":String,
+    "total":Number,
 })
 const Question= new mongoose.model("Question",{
     "id":Number,
     "quest":Array,
     "subject":String,
-})
-app.get("/hi",(req,res)=>{
-  Question.find({subject:"exam0.1"}).then((found)=>{
-    res.send(found[0].quest)
-  console.log(found[0]._d)
   })
-})
-
-
-app.get("/",(req,res)=>{
+  
+  
+  
+  app.get("/",(req,res)=>{
     if(req.isAuthenticated()){
-        Resault.find({name:req.user.username}).then((found)=>{
-            res.render("index",{photo:req.user.username,exam1:found} )
-        }
-        )
+      Resault.find({name:req.user.username}).then((found)=>{
+        res.render("index",{photo:req.user.username,exam1:found} )
+      }
+      )
     }else{
-        res.sendFile(__dirname+"/login.html" )
+      res.sendFile(__dirname+"/login.html" )
     }
-})
-
-
-app.get("/exam1",(req,res)=>{
+  })
+  
+  app.get("/resault/:resault",(req,res)=>{
     if(req.isAuthenticated()){
-      Question.find({subject:"exam1"}).then((found)=>{
+      Resault.find({sub:req.params.resault,name:req.user.username}).then((found)=>{
+    res.render("resualt",{found:found})
+      }) 
+    }else{
+      res.sendFile(__dirname+"/login.html" )
+    }
+  })
+
+app.get("/exams/:exam",(req,res)=>{
+    if(req.isAuthenticated()){
+      Question.find({subject:req.params.exam}).then((found)=>{
         var arr=found[0].quest
         var ab=JSON.stringify(found[0].quest)
         arr.forEach((element,index)=>{
@@ -78,7 +83,7 @@ app.get("/exam1",(req,res)=>{
           arr.shift()
           arr.splice(rand(),0,carry)   
         })
-        res.render("exam1" ,{qt:arr,ab:ab})
+        res.render("exam1" ,{qt:arr,ab:ab,cd:req.params.exam})
         function rand(){
           return Math.floor(Math.random()*arr.length)
           
@@ -88,64 +93,39 @@ app.get("/exam1",(req,res)=>{
       res.sendFile(__dirname+"/login.html" )
     }
   })
-
-app.post("/exam1",(req,res)=>{
-  Question.find({subject:"exam1"}).then((found)=>{
+  
+  app.post("/exams/:exam",(req,res)=>{
+    if(req.isAuthenticated()){
+      Question.find({subject:req.params.exam}).then((found)=>{
     const fc =found[0].quest ;
     var deg=0;
-    var ans =[];
-    var mans=[];
+    var mans=[],answers=[];
     var obj=req.body;
-    obj=JSON.stringify(obj)
-    for (let i = 0; i < 200; i++) {
-      let ans="ans"+i;
-      obj=obj.replaceAll(ans,"")
-    }
-    obj=obj.replaceAll(`"0"`,"")
-    obj=obj.replaceAll(`"1"`,"")
-    obj=obj.replaceAll(`"2"`,"")
-    obj=obj.replaceAll(`"3"`,"")
-    obj=obj.replaceAll(`"4"`,"")
-    obj=obj.replaceAll(`"5"`,"")
-    obj=obj.replaceAll(`"6"`,"")
-    obj=obj.replaceAll(`"7"`,"")
-    obj=obj.replaceAll(`"8"`,"")
-    obj=obj.replaceAll(`"9"`,"")
-    obj=obj.replaceAll(`"`,"")
-    obj=obj.replaceAll(`{`,"")
-    obj=obj.replaceAll(`}`,"")
-    // obj=obj.replaceAll(`"on"`,"")
-    // obj=obj.replaceAll(`[`,"")
-    // obj=obj.replaceAll(`]`,"")
-    obj=obj.replaceAll(`:`,"")
-     obj=obj.split(",")
-    var answers=[];
-     for(let i=0;i<fc.length;i++){
-
-        var me=fc[i].an + fc[i].id ;
-        answers.push(me)
-        if(obj.includes(me)){
-          ans.push(me)
+    obj= Object.keys(obj).map((key)=> obj[key]);
+    for(let i=0;i<fc.length;i++){
+      var me=fc[i].an + fc[i].id +fc[i].an ;
+      answers.push(me)
+      for (let j = 0; j < obj.length; j++) {
+        if(me==obj[j]){
           deg=deg+1
         }else{
-          mans.push(obj[i])
-        }
-      }
-      const resault = new Resault({
-        "degree":deg,
-    "name":req.user.username,
-    "sub":"exam1",
+          mans.push(obj[j])
+        }  } }
+        console.log(req.params.exam)
+        var zzx=req.params.exam
+        const resault = new Resault({
+          "degree":deg,
+          "name":req.user.username,
+          "sub":zzx,
+          "total":fc.length
         })
         resault.save()
-        var nt={
-          "ans":ans,
-          "mans":mans
-        }
-        res.render("exam1result",{"nt":nt,"qt":fc,anss:answers})
-    })
-    
-    })
-    
+        res.render("exam1result",{"mans":mans,"qt":fc,anss:answers})
+      }) 
+    }else{
+      res.sendFile(__dirname+"/login.html" )
+    }
+  })
     
     app.get("/logout",(req,res)=>{
       req.logout(req.user, err => {
