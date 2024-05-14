@@ -9,17 +9,22 @@
 </head>
 <body>
     <div class="content alert alert-info">
-        <div class="photo"> <a href="/logout" class="btn btn-info log-out"> Log Out</a> <img class="circle-img" src="photo/<%- photo %>.png" alt="avatar_img" /> </div>
-        <div class="cont">    
-            <div class="card" style="width: 11rem;">
-                <img src="/photo/exam1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title" style="text-align: center;">تصميم </h5>
-                  <a href="/resault/exam1" class="btn btn-outline-success" style="margin-left: auto; margin-bottom: 10px; width: 100%;">show resault</a>
-                  <a href="/exams/exam1" class="btn btn-primary" style="width: 100%;">get exam</a>
-                </div>
-              </div> 
+        <div class="photo"> <a href="/logout" class="btn btn-info log-out"> Log Out</a> <img class="circle-img" src="photo/<%- photo %>.png" alt="avatar_img" /> 
         </div>
+
+        <div class="cont">    
+        <% exam.forEach(element => {%>
+              <div class="card" style="width: 11rem;">
+                  <img src="/photo/<%= element.subject%>.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;"><%= element.subject%></h5>
+                    <a href="/resault/<%= element.subject%>" class="btn btn-outline-success" style="margin-left: auto; margin-bottom: 10px; width: 100%;">show resault</a>
+                    <a href="/exams/<%= element.subject%>" class="btn btn-primary" style="width: 100%;">get exam</a>
+                  </div>
+                </div> 
+                <%}); %>
+              </div>
+              
         <!-- <div class="cont">    
             <div class="card" style="width: 11rem;">
                 <img src="/photo/exam1.png" class="card-img-top" alt="...">

@@ -20,9 +20,8 @@
     display: flex;
     gap: 8px;
     flex-direction:row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
-    overflow-x: auto;
 }
 
 .circle-img {

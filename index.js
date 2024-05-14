@@ -49,13 +49,17 @@ const Question= new mongoose.model("Question",{
     "quest":Array,
     "subject":String,
   })
+//  var question=new Question({
+//    "quest":[],
+//    "subject":"",
+//   })
   
   
   
   app.get("/",(req,res)=>{
     if(req.isAuthenticated()){
-      Resault.find({name:req.user.username}).then((found)=>{
-        res.render("index",{photo:req.user.username,exam1:found} )
+      Question.find({}).then((found)=>{
+        res.render("index",{photo:req.user.username,exam:found} )
       }
       )
     }else{
