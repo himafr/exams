@@ -11,13 +11,16 @@
     <div class="content alert alert-info">
         <div class="photo"> <a href="/logout" class="btn btn-info log-out"> Log Out</a> <img class="circle-img" src="photo/<%- photo %>.png" alt="avatar_img" /> 
         </div>
-
         <div class="cont">    
-        <% exam.forEach(element => {%>
+        <% exam.forEach((element,index) => {%>
               <div class="card" style="width: 11rem;">
                   <img src="/photo/<%= element.subject%>.png" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title" style="text-align: center;"><%= element.subject%></h5>
+                    اعلي درجة
+                    <div style="display: flex;
+                    align-items: center;" ><div><%= upper[index]%></div><img src="/photo/<%= upper[index]%>.png" class="circle-img" style="height: 4rem;
+                    width: 4rem;" alt=""> </div>
                     <a href="/resault/<%= element.subject%>" class="btn btn-outline-success" style="margin-left: auto; margin-bottom: 10px; width: 100%;">show resault</a>
                     <a href="/exams/<%= element.subject%>" class="btn btn-primary" style="width: 100%;">get exam</a>
                   </div>

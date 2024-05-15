@@ -59,13 +59,20 @@ const Question= new mongoose.model("Question",{
   app.get("/",(req,res)=>{
     if(req.isAuthenticated()){
       Question.find({}).then((found)=>{
-        res.render("index",{photo:req.user.username,exam:found} )
+        Resault.find({sub:"تصميم"}).sort({degree:-1}).limit(1).then((exam1)=>{
+          Resault.find({sub:"ريادة1و2"}).sort({degree:-1}).limit(1).then((exam2)=>{
+           const exams=[exam1[0].name,exam2[0].name]
+            res.render("index",{photo:req.user.username,exam:found,upper:exams} )
+            
+          })
+          })
       }
       )
     }else{
       res.sendFile(__dirname+"/login.html" )
     }
   })
+ 
   
   app.get("/resault/:resault",(req,res)=>{
     if(req.isAuthenticated()){
