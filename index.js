@@ -53,7 +53,7 @@ const Question= new mongoose.model("Question",{
 //    "quest":[],
 //    "subject":"",
 //   })
-  
+//   question.save()
   
   
   app.get("/",(req,res)=>{
@@ -114,7 +114,9 @@ app.get("/exams/:exam",(req,res)=>{
           deg=deg+1
         }else{
           mans.push(obj[j])
-        }  } }
+        } 
+       }
+      }
         console.log(req.params.exam)
         var zzx=req.params.exam
         const resault = new Resault({
