@@ -50,7 +50,7 @@ const Question= new mongoose.model("Question",{
     "subject":String,
   })
 //  var question=new Question({
-//    "quest":[],
+//    "quest":,
 //    "subject":"",
 //   })
 //   question.save()
@@ -61,9 +61,28 @@ const Question= new mongoose.model("Question",{
       Question.find({}).then((found)=>{
         Resault.find({sub:"تصميم"}).sort({degree:-1}).limit(1).then((exam1)=>{
           Resault.find({sub:"ريادة1و2"}).sort({degree:-1}).limit(1).then((exam2)=>{
-           const exams=[exam1[0].name,exam2[0].name]
+          Resault.find({sub:"مؤسسات1و2"}).sort({degree:-1}).limit(1).then((exam3)=>{
+          Resault.find({sub:"مؤسسات3و4"}).sort({degree:-1}).limit(1).then((exam4)=>{
+          Resault.find({sub:"مؤسسات5و6"}).sort({degree:-1}).limit(1).then((exam5)=>{
+          Resault.find({sub:"مؤسسات7و8"}).sort({degree:-1}).limit(1).then((exam6)=>{
+          Resault.find({sub:"مؤسسات9و10"}).sort({degree:-1}).limit(1).then((exam7)=>{
+          Resault.find({sub:"ريادة3و4و5"}).sort({degree:-1}).limit(1).then((exam8)=>{
+           const exams=[exam1[0].name
+           ,exam2[0].name
+           ,exam3[0].name
+           ,exam4[0].name
+           ,exam5[0].name
+           ,exam6[0].name
+           ,exam7[0].name
+           ,exam8[0].name
+          ]
             res.render("index",{photo:req.user.username,exam:found,upper:exams} )
-            
+          })
+          })
+          })
+          })
+          })
+          })
           })
           })
       }
